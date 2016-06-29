@@ -17,8 +17,30 @@ import {
 class scrollbug extends Component {
   constructor (props) {
       super(props)
+
+      let dataSource = SwipeableListView.getNewDataSource().cloneWithRowsAndSections({s1: [
+        'Test1',
+        'Test2',
+        'Test3',
+        'Test4',
+        'Test5',
+        'Test6',
+        'Test7',
+        'Test8',
+        'Test9',
+        'Test10',
+        'Test11',
+        'Test12',
+        'Test13',
+        'Test14',
+        'Test15',
+        'Test16',
+        'Test17',
+        'Test18',
+        'Test19'
+      ]})
       this.state = {
-          dataSource: SwipeableListView.getNewDataSource()
+          dataSource: dataSource
       }
   }
   renderRow (rowData) {
@@ -38,36 +60,14 @@ class scrollbug extends Component {
         )
   }
   render() {
-    let dataSource = this.state.dataSource.cloneWithRowsAndSections({s1: [
-      'Test1',
-      'Test2',
-      'Test3',
-      'Test4',
-      'Test5',
-      'Test6',
-      'Test7',
-      'Test8',
-      'Test9',
-      'Test10',
-      'Test11',
-      'Test12',
-      'Test13',
-      'Test14',
-      'Test15',
-      'Test16',
-      'Test17',
-      'Test18',
-      'Test19'
-    ]})
     return (
       <View style={styles.container}>
 
         <SwipeableListView 
-                maxSwipeDistance={100}
-                removeClippedSubviews={false}
+          maxSwipeDistance={100}
           renderRow={this.renderRow.bind(this)} 
           renderQuickActions={this.renderQuickActions.bind(this)} 
-          dataSource={dataSource}
+          dataSource={this.state.dataSource}
         />
       </View>
     );
